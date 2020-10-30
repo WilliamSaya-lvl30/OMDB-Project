@@ -3,12 +3,13 @@ module.exports = {
   entry: './src/index.js',
   output: {
     filename: "bundle.js",
-    path: __dirname + '/../back/public'
+    path: __dirname + '/../back/public'  //'/../back/public'
   },
   resolve: {
     extensions: ['.js', '.jsx']
   },
   context: __dirname,
+  // ,
   module: {
     rules: [
       {
@@ -19,10 +20,22 @@ module.exports = {
           presets: [
             "@babel/preset-react",
             "@babel/env"
-          ]
-        }
-      }
+            
+          ],
+          plugins: ["@babel/plugin-proposal-class-properties"]
+        },
+      
+      },
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader'
+      },
+      
+      
     ]
   },
+  
+ 
+  
   devtool: 'source-map'
 }
