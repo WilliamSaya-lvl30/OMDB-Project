@@ -20,10 +20,6 @@ export default ({movies,eventRemoveF})=>{
                             <Card.Img variant="top" src={M.Poster} className='card-img'/>
                             <Card.Body >
                                 <Card.Title className="justify-content-md-center">{M.Title}</Card.Title>
-                                {/* <Card.Text>
-                                This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.
-                                </Card.Text> */}
                             </Card.Body>
                         </Card>
                     </Link>

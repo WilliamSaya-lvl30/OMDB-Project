@@ -22,15 +22,6 @@ class UsersContainer extends React.Component{
             } 
     }
    
-    // componentDidUpdate(prevProps){
-    //     console.log("AQui",prevProps)
-    //     if(this.props.movieFavorites !== prevProps.movieFavorites){
-    //        if(this.props.user.id){
-    //         this.props.getMoviesFavorites(this.props.user.id)
-    //         } 
-    //     }
-        
-    // }
     render(){
         return (
             <Users

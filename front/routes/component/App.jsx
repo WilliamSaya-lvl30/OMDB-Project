@@ -30,9 +30,7 @@ export default function ({history}) {
         <Route path="/" component={Home}/>
         <Redirect from="/" to="/" />
       </Switch>
-      </Row>
-     
-      
+      </Row> 
     </Container>
     </div>
    

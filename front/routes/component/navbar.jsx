@@ -131,10 +131,7 @@ class NavBar extends React.Component {
                     <Button variant="outline-primary" className='boton'>Login</Button>
                 </Link></>
                 )}
-               
-                
-                
-                
+                   
             </Navbar.Collapse>
             </Navbar>
         )
