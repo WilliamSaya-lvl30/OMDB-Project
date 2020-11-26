@@ -21,7 +21,8 @@ class LoginContainer extends React.Component {
 
         this.state={
             email:'',
-            password:''
+            password:'',
+            isLoading:false
         }
         this.hanledEmailinput=this.hanledEmailinput.bind(this)
         this.hanledPasswordinput=this.hanledPasswordinput.bind(this)
@@ -37,13 +38,14 @@ class LoginContainer extends React.Component {
 
     hanledSumit(event){
         event.preventDefault()
-        console.log("login attempt...")
-      
+        this.setState({isLoading:true})
         this.props.loginUser(this.state)
         .then((res)=>{
            
             console.log("login successful")
             this.props.history.push(`/users/${res.user.id}`)
+            this.setState({isLoading:false})
+
            return this.props.getMoviesFavorites(res.user.id) 
         })
         
@@ -58,6 +60,7 @@ class LoginContainer extends React.Component {
                     hanledSumit={this.hanledSumit}
                     password={this.state.password}
                     email={this.state.email}
+                    isLoading={this.state.isLoading}
                 
                 />
     }

@@ -11,6 +11,12 @@
   height: 18rem;
   padding: 3px;
 }
+.spiner {
+  margin-left: 60px;
+}
+.userName {
+  margin-left: 40px;
+}
 
 .card {
   height: 23rem;

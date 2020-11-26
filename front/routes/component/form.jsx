@@ -1,8 +1,8 @@
 import React from 'react'
-import {Form,Button} from 'react-bootstrap'
+import {Form,Button,Alert,Spinner} from 'react-bootstrap'
 
 
-export default ({hanledEmailinput,hanledPasswordinput,hanledSumit,email,password, formTitle, message})=>{
+export default ({hanledEmailinput,hanledPasswordinput,hanledSumit,email,password, formTitle, isLoading})=>{
 
   const emailChange = e => {
     hanledEmailinput(e.target.value);
@@ -43,7 +43,11 @@ export default ({hanledEmailinput,hanledPasswordinput,hanledSumit,email,password
             <Button variant="primary" type="submit">
                 Submit
             </Button>
-            <h2>{message}</h2>
+            {isLoading && 
+            <Alert variant='success'>
+            Cargando... 
+            <Spinner animation="border" variant="info" className={'spiner'}/>
+            </Alert>}
         </Form>
     )
 }

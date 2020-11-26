@@ -53464,7 +53464,7 @@ __webpack_require__.r(__webpack_exports__);
       email = _ref.email,
       password = _ref.password,
       formTitle = _ref.formTitle,
-      message = _ref.message;
+      isLoading = _ref.isLoading;
 
   var emailChange = function emailChange(e) {
     hanledEmailinput(e.target.value);
@@ -53506,7 +53506,13 @@ __webpack_require__.r(__webpack_exports__);
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
     variant: "primary",
     type: "submit"
-  }, "Submit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, message));
+  }, "Submit"), isLoading && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Alert"], {
+    variant: "success"
+  }, "Cargando...", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Spinner"], {
+    animation: "border",
+    variant: "info",
+    className: 'spiner'
+  })));
 });
 
 /***/ }),
@@ -53980,7 +53986,9 @@ var fotoperfil = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS0xhh5
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Image"], {
     src: user.imgProfile ? user.imgProfile : fotoperfil,
     roundedCircle: true
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["ListGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["ListGroup"].Item, null, user.nick ? user.nick : user.email), userLogger && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["ListGroup"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["ListGroup"], {
+    className: "userName"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["ListGroup"].Item, null, user.nick ? user.nick : user.email), userLogger && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["ListGroup"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: "fas fa-users"
   }), "Add Friends")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
     xs: 9
@@ -54596,7 +54604,8 @@ var LoginContainer = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this);
     _this.state = {
       email: '',
-      password: ''
+      password: '',
+      isLoading: false
     };
     _this.hanledEmailinput = _this.hanledEmailinput.bind(_assertThisInitialized(_this));
     _this.hanledPasswordinput = _this.hanledPasswordinput.bind(_assertThisInitialized(_this));
@@ -54624,11 +54633,17 @@ var LoginContainer = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       event.preventDefault();
-      console.log("login attempt...");
+      this.setState({
+        isLoading: true
+      });
       this.props.loginUser(this.state).then(function (res) {
         console.log("login successful");
 
         _this2.props.history.push("/users/".concat(res.user.id));
+
+        _this2.setState({
+          isLoading: false
+        });
 
         return _this2.props.getMoviesFavorites(res.user.id);
       });
@@ -54646,7 +54661,8 @@ var LoginContainer = /*#__PURE__*/function (_React$Component) {
         hanledPasswordinput: this.hanledPasswordinput,
         hanledSumit: this.hanledSumit,
         password: this.state.password,
-        email: this.state.email
+        email: this.state.email,
+        isLoading: this.state.isLoading
       });
     }
   }]);

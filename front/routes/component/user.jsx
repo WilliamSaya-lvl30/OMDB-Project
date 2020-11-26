@@ -11,8 +11,8 @@ export default ({user,favoritesMovies, message,eventRemoveF,userLogger})=>{
             <>
                 <Col xs={3}>
                 <Image src={user.imgProfile ? user.imgProfile : fotoperfil} roundedCircle />
-                <Row>
-                <ListGroup>
+                <Row >
+                <ListGroup className='userName'>
                     <ListGroup.Item>{user.nick ? user.nick : user.email}</ListGroup.Item>
                     {userLogger && <ListGroup.Item><i className="fas fa-users"></i>Add Friends</ListGroup.Item>}
                 </ListGroup>
